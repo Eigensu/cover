@@ -106,4 +106,8 @@ All colors MUST be HSL.
   .text-gradient-primary {
     @apply bg-gradient-to-br from-primary via-primary to-primary/60 bg-clip-text text-transparent;
   }
+  
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
 }

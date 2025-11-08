@@ -22,10 +22,13 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
-      <div className="text-center animate-fade-in">
-        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight bg-gradient-to-br from-foreground to-foreground/40 bg-clip-text text-transparent">
-          Hi, we're glad you found us
+      <div className="text-center animate-fade-in px-6">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-tight bg-gradient-to-br from-foreground via-foreground to-primary/70 bg-clip-text text-transparent">
+          Hi, we're glad
+          <br />
+          you found us
         </h1>
+        <div className="mt-6 w-16 h-1 mx-auto bg-gradient-to-r from-transparent via-primary to-transparent"></div>
       </div>
     </div>
   );
