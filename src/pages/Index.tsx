@@ -1,10 +1,18 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { SplashScreen } from "@/components/SplashScreen";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Cloud, Lightbulb, Shield, Database, Sparkles } from "lucide-react";
 
 const Index = () => {
+  const [showSplash, setShowSplash] = useState(true);
+
+  if (showSplash) {
+    return <SplashScreen onComplete={() => setShowSplash(false)} />;
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -39,15 +47,19 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-24 md:py-32">
-        <div className="max-w-5xl mx-auto text-center">
+      <section className="relative container mx-auto px-6 py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-background pointer-events-none"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div className="relative max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm mb-8">
             <Sparkles className="w-4 h-4" />
             <span>Building the future of enterprise software</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-tight text-gradient">
             Intelligent systems for
-            <span className="text-primary"> modern businesses</span>
+            <span className="text-gradient-primary"> modern businesses</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
             We design and develop custom software solutions that help organizations operate more efficiently, scale sustainably, and stay ahead of the curve.
@@ -67,7 +79,7 @@ const Index = () => {
       <section id="services" className="border-t border-border bg-muted/30">
         <div className="container mx-auto px-6 py-24 md:py-32">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4">What we do</h2>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-gradient">What we do</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Comprehensive technology solutions tailored to your business needs
             </p>
@@ -111,7 +123,7 @@ const Index = () => {
       <section id="work" className="border-t border-border">
         <div className="container mx-auto px-6 py-24 md:py-32">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4">Featured work</h2>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-gradient">Featured work</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Recent projects that showcase our capabilities
             </p>
@@ -159,7 +171,7 @@ const Index = () => {
       <section id="testimonials" className="border-t border-border bg-muted/30">
         <div className="container mx-auto px-6 py-24 md:py-32">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4">What clients say</h2>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-gradient">What clients say</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Trusted by innovative companies worldwide
             </p>
@@ -172,7 +184,7 @@ const Index = () => {
       <section id="about" className="border-t border-border">
         <div className="container mx-auto px-6 py-24 md:py-32">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-12">About eigensu</h2>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-12 text-gradient">About eigensu</h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
                 We are a team of engineers, designers, and strategists who believe that technology should be simple, reliable, and purpose-built for the problems it aims to solve.
@@ -192,7 +204,7 @@ const Index = () => {
       <section id="contact" className="border-t border-border bg-muted/30">
         <div className="container mx-auto px-6 py-24 md:py-32">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-6">Let's build something great</h2>
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-6 text-gradient">Let's build something great</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-12 max-w-2xl mx-auto">
               Interested in working together? Reach out to discuss your project and discover how we can help bring your vision to life.
             </p>
