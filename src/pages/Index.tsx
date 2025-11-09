@@ -48,9 +48,9 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative container mx-auto px-6 py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[800px] h-[800px] bg-gradient-radial from-white via-primary/15 to-primary/5 rounded-full blur-3xl opacity-60"></div>
-        </div>
+        {/* Animated gradient blobs */}
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] gradient-blob rounded-full opacity-70 pointer-events-none"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] gradient-blob rounded-full opacity-60 pointer-events-none" style={{ animationDelay: '2s' }}></div>
         
         <div className="relative max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm mb-8">
@@ -77,7 +77,8 @@ const Index = () => {
 
       {/* Services Section */}
       <section id="services" className="relative border-t border-border bg-muted/30 overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-white via-accent/10 to-transparent rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+        {/* Gradient blob bottom right */}
+        <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] gradient-blob rounded-full opacity-50 pointer-events-none" style={{ animationDelay: '1s' }}></div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-gradient">What we do</h2>
@@ -122,7 +123,8 @@ const Index = () => {
 
       {/* Work Showcase */}
       <section id="work" className="relative border-t border-border overflow-hidden">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-white via-primary/12 to-transparent rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+        {/* Gradient blob top left */}
+        <div className="absolute -top-32 -left-32 w-[450px] h-[450px] gradient-blob rounded-full opacity-50 pointer-events-none" style={{ animationDelay: '3s' }}></div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-gradient">Featured work</h2>
@@ -171,7 +173,8 @@ const Index = () => {
 
       {/* Testimonials */}
       <section id="testimonials" className="relative border-t border-border bg-muted/30 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-radial from-white via-accent/8 to-transparent rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+        {/* Gradient blob center */}
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[550px] h-[550px] gradient-blob rounded-full opacity-40 pointer-events-none" style={{ animationDelay: '4s' }}></div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-gradient">What clients say</h2>
@@ -205,7 +208,8 @@ const Index = () => {
 
       {/* Contact Section */}
       <section id="contact" className="relative border-t border-border bg-muted/30 overflow-hidden">
-        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-white via-primary/10 to-transparent rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+        {/* Gradient blob bottom left */}
+        <div className="absolute -bottom-32 left-1/4 w-[480px] h-[480px] gradient-blob rounded-full opacity-45 pointer-events-none"></div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-6 text-gradient">Let's build something great</h2>
