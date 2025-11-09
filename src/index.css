@@ -8,83 +8,98 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 8%;
+    /* Base Navy */
+    --background: 204 48% 11%;
+    --foreground: 210 20% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    /* Surface Light */
+    --card: 205 55% 15%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover: 205 55% 15%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 210 85% 42%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary Blue */
+    --primary: 200 26% 51%;
+    --primary-foreground: 210 20% 98%;
 
-    --secondary: 0 0% 94%;
-    --secondary-foreground: 0 0% 8%;
+    /* Surface variations */
+    --secondary: 205 50% 13%;
+    --secondary-foreground: 210 20% 98%;
 
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 38%;
+    --muted: 205 50% 13%;
+    --muted-foreground: 200 10% 65%;
 
-    --accent: 210 75% 38%;
-    --accent-foreground: 0 0% 98%;
+    /* Accent Blue */
+    --accent: 200 55% 65%;
+    --accent-foreground: 204 48% 11%;
+
+    /* Soft Blue Tint */
+    --soft-blue: 187 52% 80%;
+    
+    /* Beige Accent (minimal use) */
+    --beige: 39 48% 91%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
-    --ring: 210 85% 42%;
+    --border: 210 20% 20%;
+    --input: 210 20% 20%;
+    --ring: 200 55% 65%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 0 0% 8%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 95%;
-    --sidebar-accent-foreground: 0 0% 8%;
-    --sidebar-border: 0 0% 88%;
-    --sidebar-ring: 0 0% 8%;
+    --sidebar-background: 205 55% 15%;
+    --sidebar-foreground: 210 20% 78%;
+    --sidebar-primary: 210 20% 98%;
+    --sidebar-primary-foreground: 204 48% 11%;
+    --sidebar-accent: 205 50% 13%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 210 20% 20%;
+    --sidebar-ring: 200 55% 65%;
   }
 
   .dark {
-    --background: 0 0% 8%;
-    --foreground: 0 0% 92%;
+    /* Slightly lighter for dark mode */
+    --background: 204 45% 8%;
+    --foreground: 210 20% 98%;
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 92%;
+    --card: 205 50% 10%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 92%;
+    --popover: 205 50% 10%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 210 85% 48%;
-    --primary-foreground: 0 0% 8%;
+    --primary: 200 35% 58%;
+    --primary-foreground: 204 48% 11%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 92%;
+    --secondary: 205 45% 9%;
+    --secondary-foreground: 210 20% 98%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 52%;
+    --muted: 205 45% 9%;
+    --muted-foreground: 200 10% 70%;
 
-    --accent: 210 75% 45%;
-    --accent-foreground: 0 0% 92%;
+    --accent: 200 60% 70%;
+    --accent-foreground: 204 45% 8%;
+
+    --soft-blue: 187 52% 85%;
+    --beige: 39 48% 93%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 92%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 210 85% 48%;
+    --border: 210 20% 18%;
+    --input: 210 20% 18%;
+    --ring: 200 60% 70%;
     
-    --sidebar-background: 0 0% 8%;
-    --sidebar-foreground: 0 0% 78%;
-    --sidebar-primary: 0 0% 92%;
-    --sidebar-primary-foreground: 0 0% 8%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 0 0% 92%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 0 0% 92%;
+    --sidebar-background: 205 50% 10%;
+    --sidebar-foreground: 210 20% 78%;
+    --sidebar-primary: 210 20% 98%;
+    --sidebar-primary-foreground: 204 45% 8%;
+    --sidebar-accent: 205 45% 9%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 210 20% 18%;
+    --sidebar-ring: 200 60% 70%;
   }
 }
 
@@ -95,62 +110,79 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    letter-spacing: -0.005em;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-br from-foreground to-foreground/50 bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent;
   }
   
   .text-gradient-primary {
-    @apply bg-gradient-to-br from-primary via-accent to-primary/60 bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-accent via-primary to-accent/80 bg-clip-text text-transparent;
   }
   
   .bg-gradient-radial {
     background-image: radial-gradient(circle, var(--tw-gradient-stops));
   }
   
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(205 45% 20%));
+  }
+  
   .gradient-blob {
     background: radial-gradient(circle at center, 
-      hsl(var(--primary) / 0.25), 
-      hsl(var(--accent) / 0.2) 25%, 
-      hsl(var(--primary) / 0.15) 50%, 
-      hsl(var(--accent) / 0.1) 75%, 
+      hsl(var(--primary) / 0.3), 
+      hsl(var(--accent) / 0.22) 30%, 
+      hsl(var(--primary) / 0.15) 60%, 
+      hsl(var(--accent) / 0.08) 80%, 
       transparent 100%);
     filter: blur(80px);
-    animation: blob 8s ease-in-out infinite;
+    animation: blob 12s ease-in-out infinite;
   }
   
   .dark .gradient-blob {
     background: radial-gradient(circle at center, 
-      hsl(var(--primary) / 0.35), 
-      hsl(var(--accent) / 0.28) 25%, 
-      hsl(var(--primary) / 0.2) 50%, 
-      hsl(var(--accent) / 0.12) 75%, 
+      hsl(var(--primary) / 0.4), 
+      hsl(var(--accent) / 0.3) 30%, 
+      hsl(var(--primary) / 0.2) 60%, 
+      hsl(var(--accent) / 0.12) 80%, 
       transparent 100%);
     filter: blur(80px);
   }
   
   .gradient-blob-alt {
     background: radial-gradient(circle at center, 
-      hsl(var(--accent) / 0.3), 
-      hsl(var(--primary) / 0.22) 20%, 
-      hsl(var(--accent) / 0.18) 45%, 
-      hsl(var(--primary) / 0.12) 70%, 
+      hsl(var(--accent) / 0.35), 
+      hsl(var(--primary) / 0.25) 25%, 
+      hsl(var(--accent) / 0.18) 55%, 
+      hsl(var(--primary) / 0.1) 75%, 
       transparent 100%);
     filter: blur(80px);
-    animation: blob 10s ease-in-out infinite reverse;
+    animation: blob 15s ease-in-out infinite reverse;
   }
   
   .dark .gradient-blob-alt {
     background: radial-gradient(circle at center, 
-      hsl(var(--accent) / 0.4), 
-      hsl(var(--primary) / 0.3) 20%, 
-      hsl(var(--accent) / 0.22) 45%, 
-      hsl(var(--primary) / 0.15) 70%, 
+      hsl(var(--accent) / 0.45), 
+      hsl(var(--primary) / 0.32) 25%, 
+      hsl(var(--accent) / 0.22) 55%, 
+      hsl(var(--primary) / 0.14) 75%, 
       transparent 100%);
     filter: blur(80px);
+  }
+  
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(176, 224, 230, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(176, 224, 230, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
   
   @keyframes blob {
@@ -158,13 +190,20 @@ All colors MUST be HSL.
       transform: translate(0, 0) scale(1);
     }
     25% {
-      transform: translate(20px, -20px) scale(1.1);
+      transform: translate(30px, -30px) scale(1.15);
     }
     50% {
-      transform: translate(-20px, 20px) scale(0.9);
+      transform: translate(-25px, 25px) scale(0.95);
     }
     75% {
-      transform: translate(-20px, -20px) scale(1.05);
+      transform: translate(-30px, -25px) scale(1.08);
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-blob,
+    .gradient-blob-alt {
+      animation: none;
     }
   }
 }

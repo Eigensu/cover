@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        'sans': ['Poppins', 'system-ui', 'sans-serif'],
+        poppins: ["Poppins", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
+        sans: ["Poppins", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -22,6 +23,8 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        "soft-blue": "hsl(var(--soft-blue))",
+        beige: "hsl(var(--beige))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
