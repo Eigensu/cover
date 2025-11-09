@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { SplashScreen } from "@/components/SplashScreen";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Cloud, Lightbulb, Shield, Database, Sparkles } from "lucide-react";
 
@@ -23,7 +24,7 @@ const Index = () => {
               <span className="text-foreground">eigen</span>
               <span className="text-primary">su</span>
             </div>
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               <a href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Services
               </a>
@@ -36,6 +37,7 @@ const Index = () => {
               <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 About
               </a>
+              <ThemeToggle />
               <a href="#contact">
                 <Button size="sm" className="bg-primary hover:bg-primary/90">
                   Contact
@@ -49,8 +51,8 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative container mx-auto px-6 py-24 md:py-32 overflow-hidden">
         {/* Animated gradient blobs */}
-        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] gradient-blob rounded-full opacity-70 pointer-events-none"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] gradient-blob rounded-full opacity-60 pointer-events-none" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] gradient-blob rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] gradient-blob-alt rounded-full pointer-events-none" style={{ animationDelay: '2s' }}></div>
         
         <div className="relative max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm mb-8">
@@ -77,8 +79,9 @@ const Index = () => {
 
       {/* Services Section */}
       <section id="services" className="relative border-t border-border bg-muted/30 overflow-hidden">
-        {/* Gradient blob bottom right */}
-        <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] gradient-blob rounded-full opacity-50 pointer-events-none" style={{ animationDelay: '1s' }}></div>
+        {/* Gradient blobs */}
+        <div className="absolute -bottom-32 -right-32 w-[550px] h-[550px] gradient-blob rounded-full pointer-events-none" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-20 left-10 w-[350px] h-[350px] gradient-blob-alt rounded-full pointer-events-none" style={{ animationDelay: '3s' }}></div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-gradient">What we do</h2>
@@ -123,8 +126,9 @@ const Index = () => {
 
       {/* Work Showcase */}
       <section id="work" className="relative border-t border-border overflow-hidden">
-        {/* Gradient blob top left */}
-        <div className="absolute -top-32 -left-32 w-[450px] h-[450px] gradient-blob rounded-full opacity-50 pointer-events-none" style={{ animationDelay: '3s' }}></div>
+        {/* Gradient blobs */}
+        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] gradient-blob-alt rounded-full pointer-events-none" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute bottom-10 right-20 w-[400px] h-[400px] gradient-blob rounded-full pointer-events-none"></div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-gradient">Featured work</h2>
@@ -173,8 +177,9 @@ const Index = () => {
 
       {/* Testimonials */}
       <section id="testimonials" className="relative border-t border-border bg-muted/30 overflow-hidden">
-        {/* Gradient blob center */}
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[550px] h-[550px] gradient-blob rounded-full opacity-40 pointer-events-none" style={{ animationDelay: '4s' }}></div>
+        {/* Gradient blobs */}
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[550px] h-[550px] gradient-blob rounded-full pointer-events-none" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-10 left-1/4 w-[400px] h-[400px] gradient-blob-alt rounded-full pointer-events-none" style={{ animationDelay: '5s' }}></div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-gradient">What clients say</h2>
@@ -208,8 +213,9 @@ const Index = () => {
 
       {/* Contact Section */}
       <section id="contact" className="relative border-t border-border bg-muted/30 overflow-hidden">
-        {/* Gradient blob bottom left */}
-        <div className="absolute -bottom-32 left-1/4 w-[480px] h-[480px] gradient-blob rounded-full opacity-45 pointer-events-none"></div>
+        {/* Gradient blobs */}
+        <div className="absolute -bottom-32 left-1/4 w-[520px] h-[520px] gradient-blob-alt rounded-full pointer-events-none"></div>
+        <div className="absolute top-20 right-1/3 w-[450px] h-[450px] gradient-blob rounded-full pointer-events-none" style={{ animationDelay: '3s' }}></div>
         <div className="container mx-auto px-6 py-24 md:py-32 relative">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-6 text-gradient">Let's build something great</h2>

@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 8%;
 
-    --primary: 25 95% 53%;
+    --primary: 210 85% 42%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 94%;
@@ -26,7 +26,7 @@ All colors MUST be HSL.
     --muted: 0 0% 94%;
     --muted-foreground: 0 0% 38%;
 
-    --accent: 210 100% 50%;
+    --accent: 210 75% 38%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,7 +34,7 @@ All colors MUST be HSL.
 
     --border: 0 0% 88%;
     --input: 0 0% 88%;
-    --ring: 25 95% 53%;
+    --ring: 210 85% 42%;
 
     --radius: 0.5rem;
 
@@ -58,7 +58,7 @@ All colors MUST be HSL.
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 92%;
 
-    --primary: 25 95% 53%;
+    --primary: 210 85% 48%;
     --primary-foreground: 0 0% 8%;
 
     --secondary: 0 0% 12%;
@@ -67,7 +67,7 @@ All colors MUST be HSL.
     --muted: 0 0% 12%;
     --muted-foreground: 0 0% 52%;
 
-    --accent: 210 100% 50%;
+    --accent: 210 75% 45%;
     --accent-foreground: 0 0% 92%;
 
     --destructive: 0 62.8% 30.6%;
@@ -75,7 +75,7 @@ All colors MUST be HSL.
 
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 25 95% 53%;
+    --ring: 210 85% 48%;
     
     --sidebar-background: 0 0% 8%;
     --sidebar-foreground: 0 0% 78%;
@@ -113,12 +113,22 @@ All colors MUST be HSL.
   
   .gradient-blob {
     background: radial-gradient(circle at center, 
-      hsl(var(--primary) / 0.6), 
-      hsl(var(--accent) / 0.5) 40%, 
-      hsl(var(--primary) / 0.3) 70%, 
+      hsl(var(--primary) / 0.8), 
+      hsl(var(--accent) / 0.7) 30%, 
+      hsl(var(--primary) / 0.5) 60%, 
       transparent 100%);
     filter: blur(60px);
     animation: blob 8s ease-in-out infinite;
+  }
+  
+  .gradient-blob-alt {
+    background: radial-gradient(circle at center, 
+      hsl(var(--accent) / 0.8), 
+      hsl(var(--primary) / 0.6) 35%, 
+      hsl(var(--accent) / 0.4) 65%, 
+      transparent 100%);
+    filter: blur(60px);
+    animation: blob 10s ease-in-out infinite reverse;
   }
   
   @keyframes blob {
