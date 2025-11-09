@@ -6,6 +6,7 @@ import { SplashScreen } from "@/components/SplashScreen";
 import { AnimatedNavbar } from "@/components/AnimatedNavbar";
 import { TrustBadges } from "@/components/TrustBadges";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
+import { ModernFooter } from "@/components/ModernFooter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Cloud, Lightbulb, Shield, Database, Sparkles, CheckCircle2, ArrowRight, TrendingDown, Zap, Clock } from "lucide-react";
 import { motion } from "framer-motion";
@@ -450,33 +451,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-card">
-        <div className="container mx-auto px-6 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div>
-              <div className="text-lg font-semibold mb-2">
-                <span className="text-foreground">eigen</span>
-                <span className="text-primary">su</span>
-              </div>
-              <div className="text-sm text-muted-foreground">
-                © 2024 eigensu. All rights reserved.
-              </div>
-            </div>
-            <div className="flex gap-8">
-              <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">
-                LinkedIn
-              </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">
-                GitHub
-              </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">
-                Twitter
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <ModernFooter />
     </div>
   );
 };

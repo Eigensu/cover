@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         poppins: ["Poppins", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
         sans: ["Poppins", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
+        sora: ["Sora", "Poppins", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -25,6 +26,7 @@ export default {
         foreground: "hsl(var(--foreground))",
         "soft-blue": "hsl(var(--soft-blue))",
         beige: "hsl(var(--beige))",
+        "orange-light": "hsl(var(--orange-light))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

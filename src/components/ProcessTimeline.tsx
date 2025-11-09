@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Search, Layers, Wrench, Shield, TrendingUp } from "lucide-react";
@@ -14,6 +14,12 @@ const steps = [
 export const ProcessTimeline = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  
+  // Track scroll progress through the timeline section
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.7", "end 0.3"]
+  });
 
   return (
     <section ref={ref} className="relative border-t border-border overflow-hidden py-24 md:py-32">
@@ -35,13 +41,22 @@ export const ProcessTimeline = () => {
         </motion.div>
 
         <div className="max-w-5xl mx-auto relative">
-          {/* Timeline line */}
+          {/* Timeline line - base (light) */}
           <motion.div
             className="absolute top-8 left-8 md:left-1/2 w-0.5 h-full bg-primary/20 -translate-x-1/2"
             initial={{ scaleY: 0 }}
             animate={isInView ? { scaleY: 1 } : {}}
             transition={{ duration: 1.5, ease: "easeOut" }}
             style={{ transformOrigin: "top" }}
+          />
+          
+          {/* Timeline line - highlighted progress (dark brown) */}
+          <motion.div
+            className="absolute top-8 left-8 md:left-1/2 w-0.5 bg-accent -translate-x-1/2 dark:bg-accent/80"
+            style={{ 
+              scaleY: scrollYProgress,
+              transformOrigin: "top"
+            }}
           />
 
           <div className="space-y-12">

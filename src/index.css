@@ -8,55 +8,59 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Base Navy */
-    --background: 204 48% 11%;
-    --foreground: 210 20% 98%;
+    /* Light Mode - Warm & Inviting */
+    /* Beige Base */
+    --background: 40 35% 92%;
+    --foreground: 25 40% 25%;
 
-    /* Surface Light */
-    --card: 205 55% 15%;
-    --card-foreground: 210 20% 98%;
+    /* Creme Surfaces */
+    --card: 45 50% 96%;
+    --card-foreground: 25 40% 25%;
 
-    --popover: 205 55% 15%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 45 50% 96%;
+    --popover-foreground: 25 40% 25%;
 
-    /* Primary Blue */
-    --primary: 200 26% 51%;
-    --primary-foreground: 210 20% 98%;
+    /* Faded Orange Primary */
+    --primary: 25 65% 75%;
+    --primary-foreground: 25 40% 20%;
 
-    /* Surface variations */
-    --secondary: 205 50% 13%;
-    --secondary-foreground: 210 20% 98%;
+    /* Creme Secondary */
+    --secondary: 45 45% 94%;
+    --secondary-foreground: 25 40% 25%;
 
-    --muted: 205 50% 13%;
-    --muted-foreground: 200 10% 65%;
+    --muted: 40 30% 88%;
+    --muted-foreground: 35 20% 55%;
 
-    /* Accent Blue */
-    --accent: 200 55% 65%;
-    --accent-foreground: 204 48% 11%;
+    /* Choco Brown Accent */
+    --accent: 25 45% 45%;
+    --accent-foreground: 45 50% 96%;
 
-    /* Soft Blue Tint */
-    --soft-blue: 187 52% 80%;
+    /* Light Orange Tint */
+    --soft-blue: 30 75% 80%;
     
-    /* Beige Accent (minimal use) */
-    --beige: 39 48% 91%;
+    /* Beige Accent */
+    --beige: 40 35% 92%;
+    
+    /* Light Orange Highlight */
+    --orange-light: 30 75% 85%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 70% 65%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 20% 20%;
-    --input: 210 20% 20%;
-    --ring: 200 55% 65%;
+    --border: 40 25% 80%;
+    --input: 40 25% 80%;
+    --ring: 25 65% 70%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 205 55% 15%;
-    --sidebar-foreground: 210 20% 78%;
-    --sidebar-primary: 210 20% 98%;
-    --sidebar-primary-foreground: 204 48% 11%;
-    --sidebar-accent: 205 50% 13%;
-    --sidebar-accent-foreground: 210 20% 98%;
-    --sidebar-border: 210 20% 20%;
-    --sidebar-ring: 200 55% 65%;
+    --sidebar-background: 45 50% 96%;
+    --sidebar-foreground: 30 15% 35%;
+    --sidebar-primary: 25 40% 25%;
+    --sidebar-primary-foreground: 45 50% 96%;
+    --sidebar-accent: 40 30% 88%;
+    --sidebar-accent-foreground: 25 40% 25%;
+    --sidebar-border: 40 25% 80%;
+    --sidebar-ring: 25 65% 70%;
   }
 
   .dark {
@@ -106,16 +110,25 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 
   body {
     @apply bg-background text-foreground;
     font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     letter-spacing: -0.005em;
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
+  }
+  
+  /* Fancy fonts for lower sections */
+  section:nth-of-type(n+3) h2,
+  section:nth-of-type(n+3) h3 {
+    font-family: 'Sora', 'Poppins', system-ui, sans-serif;
+    font-weight: 600;
   }
 }
 
@@ -125,7 +138,15 @@ All colors MUST be HSL.
   }
   
   .text-gradient-primary {
+    @apply bg-gradient-to-br from-accent via-primary to-accent/90 bg-clip-text text-transparent;
+  }
+  
+  .dark .text-gradient-primary {
     @apply bg-gradient-to-br from-accent via-primary to-accent/80 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-fancy {
+    @apply bg-gradient-to-br from-accent via-primary to-orange-light bg-clip-text text-transparent;
   }
   
   .bg-gradient-radial {
@@ -133,52 +154,77 @@ All colors MUST be HSL.
   }
   
   .bg-gradient-hero {
+    background: linear-gradient(135deg, 
+      hsl(40 30% 85%) 0%, 
+      hsl(45 40% 88%) 25%, 
+      hsl(25 55% 82%) 60%, 
+      hsl(30 65% 80%) 100%);
+  }
+  
+  .dark .bg-gradient-hero {
     background: linear-gradient(135deg, hsl(var(--background)), hsl(205 45% 20%));
   }
   
   .gradient-blob {
-    background: radial-gradient(circle at center, 
-      hsl(var(--primary) / 0.3), 
-      hsl(var(--accent) / 0.22) 30%, 
-      hsl(var(--primary) / 0.15) 60%, 
-      hsl(var(--accent) / 0.08) 80%, 
-      transparent 100%);
-    filter: blur(80px);
+    background-image: 
+      radial-gradient(ellipse 55% 75% at 35% 45%, 
+        hsl(25 65% 75% / 0.45), 
+        hsl(30 75% 72% / 0.32) 25%, 
+        hsl(25 45% 55% / 0.22) 55%, 
+        hsl(40 35% 80% / 0.12) 75%, 
+        transparent 100%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
+    filter: blur(70px);
     animation: blob 12s ease-in-out infinite;
   }
   
   .dark .gradient-blob {
-    background: radial-gradient(circle at center, 
-      hsl(var(--primary) / 0.4), 
-      hsl(var(--accent) / 0.3) 30%, 
-      hsl(var(--primary) / 0.2) 60%, 
-      hsl(var(--accent) / 0.12) 80%, 
-      transparent 100%);
+    background-image: 
+      radial-gradient(ellipse 65% 85% at 40% 35%, 
+        hsl(var(--primary) / 0.4), 
+        hsl(var(--accent) / 0.3) 25%, 
+        hsl(var(--primary) / 0.2) 55%, 
+        hsl(var(--accent) / 0.12) 75%, 
+        transparent 100%);
     filter: blur(80px);
+    background-blend-mode: normal;
   }
   
   .gradient-blob-alt {
-    background: radial-gradient(circle at center, 
-      hsl(var(--accent) / 0.35), 
-      hsl(var(--primary) / 0.25) 25%, 
-      hsl(var(--accent) / 0.18) 55%, 
-      hsl(var(--primary) / 0.1) 75%, 
-      transparent 100%);
-    filter: blur(80px);
+    background-image: 
+      radial-gradient(ellipse 80% 60% at 60% 50%, 
+        hsl(30 75% 72% / 0.42), 
+        hsl(40 35% 82% / 0.30) 30%, 
+        hsl(25 65% 75% / 0.20) 60%, 
+        hsl(45 50% 88% / 0.10) 80%, 
+        transparent 100%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
+    filter: blur(70px);
     animation: blob 15s ease-in-out infinite reverse;
   }
   
   .dark .gradient-blob-alt {
-    background: radial-gradient(circle at center, 
-      hsl(var(--accent) / 0.45), 
-      hsl(var(--primary) / 0.32) 25%, 
-      hsl(var(--accent) / 0.22) 55%, 
-      hsl(var(--primary) / 0.14) 75%, 
-      transparent 100%);
+    background-image: 
+      radial-gradient(ellipse 75% 90% at 55% 60%, 
+        hsl(var(--accent) / 0.45), 
+        hsl(var(--primary) / 0.32) 30%, 
+        hsl(var(--accent) / 0.22) 60%, 
+        hsl(var(--primary) / 0.14) 80%, 
+        transparent 100%);
     filter: blur(80px);
+    background-blend-mode: normal;
   }
   
   .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(25 45% 65% / 0.18) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(25 45% 65% / 0.18) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  .dark .grid-pattern {
     background-image: 
       linear-gradient(rgba(176, 224, 230, 0.08) 1px, transparent 1px),
       linear-gradient(90deg, rgba(176, 224, 230, 0.08) 1px, transparent 1px);
