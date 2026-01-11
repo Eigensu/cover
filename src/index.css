@@ -138,7 +138,7 @@ All colors MUST be HSL.
   }
   
   .text-gradient-primary {
-      @apply bg-gradient-to-br from-primary via-[var(--orange-light)] to-accent/80 bg-clip-text text-transparent;
+      @apply bg-gradient-to-br from-foreground via-accent to-primary/80 bg-clip-text text-transparent;
   }
   
   .dark .text-gradient-primary {

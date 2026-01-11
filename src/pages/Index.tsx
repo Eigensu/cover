@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ServiceCard";
-import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { Testimonials } from "@/components/ui/twitter-testimonial-cards";
 import { SplashScreen } from "@/components/SplashScreen";
-import { AnimatedNavbar } from "@/components/AnimatedNavbar";
+import CardNav from "@/components/navbar/CardNav";
 import { TrustBadges } from "@/components/TrustBadges";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { ModernFooter } from "@/components/ModernFooter";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import Squares from "@/components/Squares";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Cloud, Lightbulb, Shield, Database, Sparkles, CheckCircle2, ArrowRight, TrendingDown, Zap, Clock } from "lucide-react";
 import { motion } from "framer-motion";
@@ -14,25 +16,149 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import logo from "/logo.svg";
 
 const Index = () => {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(() => {
+    if (typeof window === "undefined") return true;
+    try {
+      return !localStorage.getItem("splashSeen");
+    } catch {
+      return true;
+    }
+  });
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+    
+    checkTheme();
+    
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    
+    return () => observer.disconnect();
+  }, []);
 
   if (showSplash) {
-    return <SplashScreen onComplete={() => setShowSplash(false)} />;
+    return (
+      <SplashScreen
+        onComplete={() => {
+          try {
+            localStorage.setItem("splashSeen", "true");
+          } catch {
+            /* ignore */
+          }
+          setShowSplash(false);
+        }}
+      />
+    );
   }
+
+  // Theme-aware colors
+  const navItems = isDark
+    ? [
+        {
+          label: "Services",
+          bgColor: "#4a90a4",
+          textColor: "#0b161e",
+          links: [
+            { label: "Services", href: "#services", ariaLabel: "View Services" },
+            { label: "Solutions", href: "#solutions", ariaLabel: "View Solutions" }
+          ]
+        },
+        {
+          label: "Projects",
+          bgColor: "#5fa3b8",
+          textColor: "#0b161e",
+          links: [
+            { label: "Projects", href: "/projects", ariaLabel: "View Projects" }
+          ]
+        },
+        {
+          label: "About",
+          bgColor: "#6db5cc",
+          textColor: "#0b161e",
+          links: [
+            { label: "About Us", href: "#about", ariaLabel: "Learn About Us" },
+            { label: "Contact", href: "#contact", ariaLabel: "Contact Us" }
+          ]
+        }
+      ]
+    : [
+        {
+          label: "Services",
+          bgColor: "#8b6344",
+          textColor: "#fff",
+          links: [
+            { label: "Services", href: "#services", ariaLabel: "View Services" },
+            { label: "Solutions", href: "#solutions", ariaLabel: "View Solutions" }
+          ]
+        },
+        {
+          label: "Projects",
+          bgColor: "#7a5540",
+          textColor: "#fff",
+          links: [
+            { label: "Projects", href: "/projects", ariaLabel: "View Projects" }
+          ]
+        },
+        {
+          label: "About",
+          bgColor: "#6d4935",
+          textColor: "#fff",
+          links: [
+            { label: "About Us", href: "#about", ariaLabel: "Learn About Us" },
+            { label: "Contact", href: "#contact", ariaLabel: "Contact Us" }
+          ]
+        }
+      ];
+
+  const baseColor = isDark ? "#0d1c26" : "#faf7f0";
+  const menuColor = isDark ? "#f9fafb" : "#593c26";
+  const buttonBgColor = isDark ? "#85c2e0" : "#a66a3f";
+  const buttonTextColor = isDark ? "#0b161e" : "#faf7f0";
 
   return (
     <div className="min-h-screen bg-background">
-      <AnimatedNavbar />
+      <CardNav
+        logo={logo}
+        logoAlt="Eigensu Logo"
+        items={navItems}
+        baseColor={baseColor}
+        menuColor={menuColor}
+        buttonBgColor={buttonBgColor}
+        buttonTextColor={buttonTextColor}
+        ease="power3.out"
+      />
+      
+      {/* Theme Toggle - Fixed on extreme right */}
+      <div className="fixed top-4 right-4 z-[100]">
+        <ThemeToggle />
+      </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-gradient-hero grid-pattern">
+      <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-gradient-hero">
+        {/* Squares background */}
+        <Squares
+          direction="diagonal"
+          speed={0.5}
+          squareSize={40}
+          borderColor={isDark ? "rgba(176, 224, 230, 0.12)" : "rgba(139, 99, 68, 0.18)"}
+          hoverFillColor={isDark ? "rgba(176, 224, 230, 0.08)" : "rgba(139, 99, 68, 0.12)"}
+          gradientColor={isDark ? "#1a2b3a" : "#e4ddcd"}
+        />
+        
         {/* Animated gradient blobs */}
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] gradient-blob rounded-full pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] gradient-blob-alt rounded-full pointer-events-none" style={{ animationDelay: '2s' }} />
         
-        <div className="container mx-auto px-6 relative">
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -113,43 +239,73 @@ const Index = () => {
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <ServiceCard
-              icon={Code2}
-              title="Software Development"
-              description="Custom applications built with modern technologies. We focus on maintainable, scalable solutions that grow with your business."
-              index={0}
-            />
-            <ServiceCard
-              icon={Cloud}
-              title="Cloud Infrastructure"
-              description="Reliable and secure cloud architecture designed for performance and cost efficiency. AWS, Azure, and GCP expertise."
-              index={1}
-            />
-            <ServiceCard
-              icon={Lightbulb}
-              title="Technical Consulting"
-              description="Strategic guidance on technology decisions, architecture design, and team development to accelerate your growth."
-              index={2}
-            />
-            <ServiceCard
-              icon={Database}
-              title="Data Engineering"
-              description="Build robust data pipelines and analytics platforms. Transform raw data into actionable business insights."
-              index={3}
-            />
-            <ServiceCard
-              icon={Shield}
-              title="Security & Compliance"
-              description="Comprehensive security audits and compliance implementation. Protect your business and customer data."
-              index={4}
-            />
-            <ServiceCard
-              icon={Sparkles}
-              title="AI Integration"
-              description="Implement cutting-edge AI and machine learning solutions to automate processes and enhance decision-making."
-              index={5}
-            />
+          <div className="max-w-6xl mx-auto grid gap-8 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+            <Card className="border-border bg-card h-full">
+              <CardContent className="p-8 h-full flex flex-col">
+                <div className="w-14 h-14 rounded-xl bg-soft-blue/15 flex items-center justify-center mb-6">
+                  <Code2 className="w-7 h-7 text-accent" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4">Software Development</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Custom applications built with modern technologies. We focus on maintainable, scalable solutions that grow with your business.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card h-full">
+              <CardContent className="p-8 h-full flex flex-col">
+                <div className="w-14 h-14 rounded-xl bg-soft-blue/15 flex items-center justify-center mb-6">
+                  <Cloud className="w-7 h-7 text-accent" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4">Cloud Infrastructure</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Reliable and secure cloud architecture designed for performance and cost efficiency. AWS, Azure, and GCP expertise.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card h-full">
+              <CardContent className="p-8 h-full flex flex-col">
+                <div className="w-14 h-14 rounded-xl bg-soft-blue/15 flex items-center justify-center mb-6">
+                  <Lightbulb className="w-7 h-7 text-accent" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4">Technical Consulting</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Strategic guidance on technology decisions, architecture design, and team development to accelerate your growth.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card h-full">
+              <CardContent className="p-8 h-full flex flex-col">
+                <div className="w-14 h-14 rounded-xl bg-soft-blue/15 flex items-center justify-center mb-6">
+                  <Database className="w-7 h-7 text-accent" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4">Data Engineering</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Build robust data pipelines and analytics platforms. Transform raw data into actionable business insights.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card h-full">
+              <CardContent className="p-8 h-full flex flex-col">
+                <div className="w-14 h-14 rounded-xl bg-soft-blue/15 flex items-center justify-center mb-6">
+                  <Shield className="w-7 h-7 text-accent" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4">Security & Compliance</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Comprehensive security audits and compliance implementation. Protect your business and customer data.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card h-full">
+              <CardContent className="p-8 h-full flex flex-col">
+                <div className="w-14 h-14 rounded-xl bg-soft-blue/15 flex items-center justify-center mb-6">
+                  <Sparkles className="w-7 h-7 text-accent" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4">AI Integration</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Implement cutting-edge AI and machine learning solutions to automate processes and enhance decision-making.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -338,7 +494,7 @@ const Index = () => {
               Trusted by innovative companies worldwide
             </p>
           </motion.div>
-          <TestimonialCarousel />
+          <Testimonials />
         </div>
       </section>
 

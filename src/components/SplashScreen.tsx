@@ -9,16 +9,24 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Check current theme on mount
     const isDarkMode = document.documentElement.classList.contains("dark");
     setIsDark(isDarkMode);
+
+    const observer = new MutationObserver(() => {
+      const nowDark = document.documentElement.classList.contains("dark");
+      setIsDark(nowDark);
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
     const timer = setTimeout(() => {
       setFadeOut(true);
       setTimeout(onComplete, 800);
     }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, [onComplete]);
 
   return (
