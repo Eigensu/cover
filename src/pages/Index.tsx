@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ServiceCard } from "@/components/ServiceCard";
 import { Testimonials } from "@/components/ui/twitter-testimonial-cards";
+import LogoLoop from "@/components/LogoLoop";
 import { SplashScreen } from "@/components/SplashScreen";
 import CardNav from "@/components/navbar/CardNav";
-import { TrustBadges } from "@/components/TrustBadges";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { ModernFooter } from "@/components/ModernFooter";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import Squares from "@/components/Squares";
 import { Card, CardContent } from "@/components/ui/card";
-import { Code2, Cloud, Lightbulb, Shield, Database, Sparkles, CheckCircle2, ArrowRight, TrendingDown, Zap, Clock } from "lucide-react";
+import { Code2, Cloud, Lightbulb, Shield, Database, Sparkles, CheckCircle2, ArrowRight, TrendingDown, Zap, Clock, Handshake, Activity, Globe2 } from "lucide-react";
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiAwsamplify, SiCloudflare, SiDocker } from "react-icons/si";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -124,6 +124,16 @@ const Index = () => {
   const buttonBgColor = isDark ? "#85c2e0" : "#a66a3f";
   const buttonTextColor = isDark ? "#0b161e" : "#faf7f0";
 
+  const heroLogos = [
+    { node: <SiReact className="text-sky-400 w-10 h-10" />, title: "React", href: "https://react.dev" },
+    { node: <SiNextdotjs className="text-foreground w-10 h-10" />, title: "Next.js", href: "https://nextjs.org" },
+    { node: <SiTypescript className="text-blue-500 w-10 h-10" />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+    { node: <SiTailwindcss className="text-cyan-400 w-10 h-10" />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+    { node: <SiAwsamplify className="text-amber-400 w-10 h-10" />, title: "AWS", href: "https://aws.amazon.com" },
+    { node: <SiCloudflare className="text-orange-400 w-10 h-10" />, title: "Cloudflare", href: "https://www.cloudflare.com" },
+    { node: <SiDocker className="text-sky-500 w-10 h-10" />, title: "Docker", href: "https://www.docker.com" }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <CardNav
@@ -158,8 +168,9 @@ const Index = () => {
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] gradient-blob rounded-full pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] gradient-blob-alt rounded-full pointer-events-none" style={{ animationDelay: '2s' }} />
         
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
+         <div className="relative z-10">
+           <div className="container mx-auto px-6">
+             <div className="max-w-5xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -213,11 +224,55 @@ const Index = () => {
                 See Pricing
               </Button>
             </motion.div>
-          </div>
-        </div>
-      </section>
+             </div>
+           </div>
 
-      <TrustBadges />
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+               className="mt-10 w-full max-w-none mx-auto px-4 sm:px-6 lg:px-8"
+            >
+              <div className="relative w-full overflow-hidden rounded-3xl border border-border/70 bg-card/80 backdrop-blur-sm shadow-xl">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(123,175,212,0.12),transparent_35%)] dark:bg-[radial-gradient(circle_at_20%_20%,rgba(133,194,224,0.12),transparent_35%)]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent" />
+                <div className="relative flex items-center justify-between gap-4 px-6 py-4 border-b border-border/60">
+                  <div className="flex items-center gap-3 text-left">
+                    <div className="w-10 h-10 rounded-2xl bg-soft-blue/20 flex items-center justify-center text-accent">
+                      <Zap className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Technologies we use to build</p>
+                      <p className="font-semibold text-foreground">Apps like this</p>
+                    </div>
+                  </div>
+                  <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
+                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-accent border border-primary/20">
+                      <TrendingDown className="w-3.5 h-3.5" />
+                      <span>Cost-aware rollouts</span>
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-accent border border-primary/20">
+                      <Shield className="w-3.5 h-3.5" />
+                      <span>Security-first defaults</span>
+                    </span>
+                  </div>
+                </div>
+                <div className="relative px-4 py-8 sm:px-6">
+                  <LogoLoop
+                    logos={heroLogos}
+                    speed={90}
+                    direction="left"
+                    logoHeight={44}
+                    gap={48}
+                    hoverSpeed={10}
+                    scaleOnHover
+                    ariaLabel="Technology stacks we deliver on"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+      </section>
 
       {/* Services Section */}
       <section id="services" className="relative border-t border-border bg-secondary/30 overflow-hidden py-24 md:py-32">
@@ -477,24 +532,83 @@ const Index = () => {
 
       {/* Testimonials */}
       <section id="testimonials" className="relative border-t border-border bg-secondary/30 overflow-hidden py-24 md:py-32">
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[550px] h-[550px] gradient-blob rounded-full pointer-events-none" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-10 left-1/4 w-[400px] h-[400px] gradient-blob-alt rounded-full pointer-events-none" style={{ animationDelay: '5s' }} />
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(166,106,63,0.16),transparent_45%)] dark:bg-[radial-gradient(circle_at_25%_35%,rgba(133,194,224,0.12),transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_65%,rgba(123,175,212,0.18),transparent_45%)] dark:bg-[radial-gradient(circle_at_70%_65%,rgba(76,117,146,0.3),transparent_50%)]" />
+          <div className="absolute top-10 left-1/4 w-[380px] h-[380px] gradient-blob-alt rounded-full pointer-events-none" style={{ animationDelay: '4s' }} />
+          <div className="absolute bottom-0 right-6 w-[520px] h-[520px] gradient-blob rounded-full pointer-events-none" style={{ animationDelay: '2s' }} />
+        </div>
         
         <div className="container mx-auto px-6 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-gradient">
-              What clients say
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Trusted by innovative companies worldwide
-            </p>
-          </motion.div>
-          <Testimonials />
+          <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/70 border border-border text-sm w-fit shadow-sm">
+                <Sparkles className="w-4 h-4 text-accent" />
+                <span>Proof from delivery teams</span>
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gradient">
+                  What clients say
+                </h2>
+                <p className="text-muted-foreground text-lg max-w-2xl">
+                  Signals from operators, CTOs, and program leads shipping with eigensu. We pair enterprise guardrails with zero-fuss delivery so teams can move fast without destabilizing prod.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-3 gap-3 sm:gap-4">
+                {[{ label: "Net promoter", metric: "+72 NPS" }, { label: "Avg. rollout", metric: "3.5 weeks" }, { label: "SLO upheld", metric: "99.95%" }].map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-border bg-card/70 backdrop-blur-sm p-4 shadow-sm">
+                    <p className="text-sm text-muted-foreground mb-1 flex items-center gap-2">
+                      <Activity className="w-4 h-4 text-accent" />
+                      {item.label}
+                    </p>
+                    <p className="text-2xl font-semibold text-foreground">{item.metric}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {["Fintech", "Healthcare", "Climate", "Marketplace", "SaaS"].map((sector) => (
+                  <span key={sector} className="px-3 py-1.5 rounded-full border border-border bg-card/70 text-sm text-foreground shadow-sm">
+                    {sector}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-4 shadow">
+                <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-soft-blue/20 text-accent">
+                  <Handshake className="w-5 h-5" />
+                </div>
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  Shared runbooks, steady comms, and co-owned dashboards keep execs, PMs, and SREs aligned from kickoff through hypercare.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="relative"
+            >
+              <div className="absolute inset-0 blur-3xl opacity-60 bg-gradient-to-br from-primary/25 via-accent/20 to-transparent" />
+              <div className="absolute -left-6 -right-6 top-10 bottom-10 rounded-[32px] border border-border/70 bg-card/40 backdrop-blur-xl" />
+              <div className="relative flex justify-center lg:justify-end">
+                <Testimonials className="scale-[1.02] sm:scale-105 lg:scale-[1.12] lg:-translate-x-4 drop-shadow-2xl" />
+              </div>
+              <div className="absolute -bottom-10 left-2 flex items-center gap-3 rounded-full bg-card/80 border border-border px-4 py-2 text-sm shadow">
+                <Globe2 className="w-4 h-4 text-accent" />
+                <span className="text-muted-foreground">Serving teams across 4 continents</span>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
