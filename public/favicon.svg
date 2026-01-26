@@ -1,6 +1,16 @@
-<svg width="32" height="32" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <text x="0" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" letter-spacing="0">
-    <tspan fill="#593c26">eigen</tspan><tspan fill="#e9b896">su</tspan>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#faf7f0"/>
+  <text x="16" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" letter-spacing="-0.02em" text-anchor="middle">
+    <tspan class="logo-eigen" fill="#593c26">e</tspan><tspan class="logo-su" fill="#a66a3f">s</tspan>
   </text>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      rect { fill: #0d1c26 !important; }
+      .logo-eigen { fill: #85c2e0 !important; }
+      .logo-su { fill: #c9e5f3 !important; }
+    }
+    html.dark rect { fill: #0d1c26 !important; }
+    html.dark .logo-eigen { fill: #85c2e0 !important; }
+    html.dark .logo-su { fill: #c9e5f3 !important; }
+  </style>
 </svg>
-

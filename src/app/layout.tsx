@@ -24,6 +24,15 @@ export const metadata: Metadata = {
   title: 'Eigensu - Enterprise-grade IT Solutions',
   description: 'Enterprise-grade IT solutions delivered without friction. From cloud and security to managed services—Eigensu keeps your stack fast, safe, and scalable.',
   keywords: ['IT solutions', 'cloud infrastructure', 'software development', 'enterprise technology'],
+  icons: {
+    icon: [
+      {
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcut: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
