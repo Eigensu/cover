@@ -1,9 +1,12 @@
+"use client"
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Testimonials } from "@/components/ui/twitter-testimonial-cards";
 import LogoLoop from "@/components/LogoLoop";
 import { SplashScreen } from "@/components/SplashScreen";
 import CardNav from "@/components/navbar/CardNav";
+import { Logo } from "@/components/Logo";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { ModernFooter } from "@/components/ModernFooter";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -16,20 +19,29 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import logo from "/logo.svg";
 
-const Index = () => {
-  const [showSplash, setShowSplash] = useState(() => {
-    if (typeof window === "undefined") return true;
-    try {
-      return !localStorage.getItem("splashSeen");
-    } catch {
-      return true;
-    }
-  });
+export default function Home() {
+  const [showSplash, setShowSplash] = useState(true);
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    
+    // Check splash screen state
+    try {
+      const splashSeen = localStorage.getItem("splashSeen");
+      if (splashSeen) {
+        setShowSplash(false);
+      }
+    } catch {
+      // Ignore localStorage errors
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     const checkTheme = () => {
       setIsDark(document.documentElement.classList.contains("dark"));
     };
@@ -43,7 +55,12 @@ const Index = () => {
     });
     
     return () => observer.disconnect();
-  }, []);
+  }, [mounted]);
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return null;
+  }
 
   if (showSplash) {
     return (
@@ -86,6 +103,7 @@ const Index = () => {
           textColor: "#0b161e",
           links: [
             { label: "About Us", href: "#about", ariaLabel: "Learn About Us" },
+            { label: "Careers", href: "/careers", ariaLabel: "Join Our Team" },
             { label: "Contact", href: "#contact", ariaLabel: "Contact Us" }
           ]
         }
@@ -114,6 +132,7 @@ const Index = () => {
           textColor: "#fff",
           links: [
             { label: "About Us", href: "#about", ariaLabel: "Learn About Us" },
+            { label: "Careers", href: "/careers", ariaLabel: "Join Our Team" },
             { label: "Contact", href: "#contact", ariaLabel: "Contact Us" }
           ]
         }
@@ -137,7 +156,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <CardNav
-        logo={logo}
+        logo={<Logo height={28} />}
         logoAlt="Eigensu Logo"
         items={navItems}
         baseColor={baseColor}
@@ -601,7 +620,7 @@ const Index = () => {
               <div className="absolute inset-0 blur-3xl opacity-60 bg-gradient-to-br from-primary/25 via-accent/20 to-transparent" />
               <div className="absolute -left-6 -right-6 top-10 bottom-10 rounded-[32px] border border-border/70 bg-card/40 backdrop-blur-xl" />
               <div className="relative flex justify-center lg:justify-end">
-                <Testimonials className="scale-[1.02] sm:scale-105 lg:scale-[1.12] lg:-translate-x-4 drop-shadow-2xl" />
+                <Testimonials className="scale-90 lg:scale-100" />
               </div>
               <div className="absolute -bottom-10 left-2 flex items-center gap-3 rounded-full bg-card/80 border border-border px-4 py-2 text-sm shadow">
                 <Globe2 className="w-4 h-4 text-accent" />
@@ -724,6 +743,4 @@ const Index = () => {
       <ModernFooter />
     </div>
   );
-};
-
-export default Index;
+}

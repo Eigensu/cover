@@ -7,8 +7,15 @@ interface SplashScreenProps {
 export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   const [fadeOut, setFadeOut] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     const isDarkMode = document.documentElement.classList.contains("dark");
     setIsDark(isDarkMode);
 
@@ -27,15 +34,30 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
       clearTimeout(timer);
       observer.disconnect();
     };
-  }, [onComplete]);
+  }, [onComplete, mounted]);
+
+  if (!mounted) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
+        <div className="text-center animate-fade-in px-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-tight">
+            <span className="bg-gradient-to-br from-amber-600 via-orange-500 to-red-400 bg-clip-text text-transparent">
+              Hi, we're glad
+              <br />
+              you found us
+            </span>
+          </h1>
+          <div className="mt-6 w-16 h-1 mx-auto bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-colors duration-700 ${
-        isDark ? "bg-slate-950" : "bg-white"
-      } ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-background ${
         fadeOut ? "opacity-0" : "opacity-100"
-      }`}
+      } transition-opacity duration-800`}
     >
       <div className="text-center animate-fade-in px-6">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-tight">

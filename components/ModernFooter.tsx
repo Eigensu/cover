@@ -15,7 +15,7 @@ export const ModernFooter = () => {
       { label: "About", href: "#about" },
       { label: "Case Studies", href: "#work" },
       { label: "Testimonials", href: "#testimonials" },
-      { label: "Careers", href: "#" },
+      { label: "Careers", href: "/careers" },
       { label: "Blog", href: "#" },
     ],
     Resources: [
